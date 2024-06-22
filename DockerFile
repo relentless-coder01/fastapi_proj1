@@ -1,0 +1,17 @@
+#
+FROM python:3.9
+
+#
+WORKDIR /fastapi_proj1
+
+#
+COPY ./requirements.txt /fastapi_proj1/requirements.txt
+
+#
+RUN pip install --no-cache-dir --upgrade -r /fastapi_proj1/requirements.txt
+
+#
+COPY ./app /fastapi_proj1/app
+
+#
+CMD ["fastapi", "run", "app/main.py", "--port", "8000"]
